@@ -1,6 +1,9 @@
 # Project Name
  ## Amazona
 
+# Project objective
+Amazona is an eCommerce website like Amazon. This marketplace website is built by using React and Redux in frontend and Node and MongoDB in the backend.
+
 # What I Will Build
 ## Home Screen
 ### Create react app

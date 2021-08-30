@@ -1,8 +1,8 @@
 {
   "name": "amazona",
   "version": "1.0.0",
-  "description": "Full Ecommerce application",
-  "main": "index.js",
+  "description": "Fullstack Ecommerce application",
+  "main": "src/index.js",
   "scripts": {
     "test": "npm run test"
   },
