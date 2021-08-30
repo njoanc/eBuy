@@ -1,0 +1,27 @@
+{
+  "name": "amazona",
+  "version": "1.0.0",
+  "description": "Full Ecommerce application",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/njoanc/amazona.git"
+  },
+  "keywords": [
+    "NodeJs",
+    "React",
+    "Git",
+    "Amazon",
+    "PayPal",
+    "Mongoose"
+  ],
+  "author": "Jeanne d'Arc NYIRAMWIZA",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/njoanc/amazona/issues"
+  },
+  "homepage": "https://github.com/njoanc/amazona#readme"
+}
