@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import Rating from "./Rating";
 
 export default function Product(props) {

@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 export default function Rating(props) {
   const { rating, numReviews } = props;
@@ -60,7 +59,7 @@ export default function Rating(props) {
           }
         ></i>
       </span>
-      <span>{numReviews + " " + "reviews"}</span>
+      <span>{numReviews + "reviews"}</span>
     </div>
   );
 }
