@@ -7,7 +7,7 @@ const data = {
       image: "./../images/product-1.jpg",
       price: "$120",
       brand: "Nike",
-      countInStock: 0,
+      countInStock: 10,
       rating: 4.5,
       numReviews: 90,
       description: "High Quality",
