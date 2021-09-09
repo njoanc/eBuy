@@ -1,0 +1,37 @@
+{
+  "name": "backend",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "eBuy Backend ",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm run test",
+    "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js --ignore client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/njoanc/eBuy.git"
+  },
+  "keywords": [
+    "Heroku",
+    "NodeJs",
+    "ExpressJs",
+    "MongoDB",
+    "Amazon",
+    "PayPal"
+  ],
+  "author": "Jeanne d'Arc NYIRAMWIZA",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/njoanc/eBuy/issues"
+  },
+  "homepage": "https://github.com/njoanc/eBuy#readme",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "eslint": "^7.32.0",
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
+}
