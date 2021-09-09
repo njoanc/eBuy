@@ -1,63 +1,89 @@
-import React from "react";
-// import Product from "../components/Product";
-import data from "../data";
-import Rating from "../components/Rating";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { detailsProduct } from "../actions/productActions";
 
-export default function ProductScreen(props) {
-  const product = data.products.find((x) => x._id === props.match.params.id);
+function ProductScreen(props) {
+  const [qty, setQty] = useState(1);
+  const productDetails = useSelector((state) => state.productDetails);
+  const { product, loading, error } = productDetails;
+  const dispatch = useDispatch();
 
-  if (!product) {
-    return <div>Product not Found</div>;
-  }
+  useEffect(() => {
+    dispatch(detailsProduct(props.match.params.id));
+    return () => {
+      //
+    };
+  }, [dispatch, props.match.params.id]);
+
+  const handleAddToCart = () => {
+    props.history.push("/cart/" + props.match.params.id + "?qty=" + qty);
+  };
+
   return (
     <div>
-      <Link to="/">Back to result</Link>
-
-      <div className="row top">
-        <div className="col-2">
-          <img className="large" src={product.image} alt={product.name}></img>
-        </div>
-        <div className="col-1">
-          <ul>
-            <li>
-              <h1>{product.name}</h1>
-            </li>
-            <li>
-              <Rating rating={product.rating} numReviews={product.numReviews} />
-            </li>
-            <li>Price: {product.price}</li>
-            <li>
-              Description: <p>{product.description}</p>
-            </li>
-          </ul>
-        </div>
-        <div className="col-1">
-          <div className="card card-body">
+      <div className="back-to-result">
+        <Link to="/">Back to result</Link>
+      </div>
+      {loading ? (
+        <div>Loading...</div>
+      ) : error ? (
+        <div>{error} </div>
+      ) : (
+        <div className="details">
+          <div className="details-image">
+            <img src={product.image} alt="product"></img>
+          </div>
+          <div className="details-info">
             <ul>
               <li>
-                <div className="row">
-                  <div>Price</div>
-                  <div className="price">{product.price}</div>
-                </div>
-                <div className="row">
-                  <div>Status:</div>
-                  <div>
-                    {product.countInStock > 0 ? (
-                      <span className="success">In Stock</span>
-                    ) : (
-                      <span className="danger">Unavailable</span>
-                    )}
-                  </div>
-                </div>
+                <h4>{product.name}</h4>
               </li>
               <li>
-                <button className="primary block">Add to Cart</button>
+                {product.rating} Stars ({product.numReviews} Reviews)
+              </li>
+              <li>
+                Price: <b>${product.price}</b>
+              </li>
+              <li>
+                Description:
+                <div>{product.description}</div>
+              </li>
+            </ul>
+          </div>
+          <div className="details-action">
+            <ul>
+              <li>Price: {product.price}</li>
+              <li>
+                Status: {product.countInStock > 0 ? "In Stock" : "Unavailable."}
+              </li>
+              <li>
+                Qty:{" "}
+                <select
+                  value={qty}
+                  onChange={(e) => {
+                    setQty(e.target.value);
+                  }}
+                >
+                  {[...Array(product.countInStock).keys()].map((x) => (
+                    <option key={x + 1} value={x + 1}>
+                      {x + 1}
+                    </option>
+                  ))}
+                </select>
+              </li>
+              <li>
+                {product.countInStock > 0 && (
+                  <button onClick={handleAddToCart} className="button primary">
+                    Add to Cart
+                  </button>
+                )}
               </li>
             </ul>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
+export default ProductScreen;
